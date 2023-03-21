@@ -1,4 +1,4 @@
-package ejercicio2;
+package excepciones;
 
 public class MiExcepcion extends Exception {
 

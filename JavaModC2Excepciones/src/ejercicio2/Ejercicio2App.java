@@ -3,6 +3,8 @@
  */
 package ejercicio2;
 
+import excepciones.MiExcepcion;
+
 /**
  * @author aitor
  *
