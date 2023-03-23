@@ -5,6 +5,8 @@ package ejercicio5;
 
 import java.security.SecureRandom;
 
+import excepciones.MiExcepcion;
+
 /**
  * @author aitor
  *
@@ -12,10 +14,11 @@ import java.security.SecureRandom;
 public class Password {
 
 	private final int LONGITUD = 8;
+	private static final String ALFABETO = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
 	// ATRIBUTOS
-	int longitud;
-	String contraseña;
+	private int longitud;
+	private String contraseña;
 
 	// CONSTRUCTORES
 	public Password() {
@@ -38,31 +41,30 @@ public class Password {
 		return contraseña;
 	}
 
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public int getLongitud() {
+		return longitud;
 	}
 
 	// METODO QUE GENERA UN PASSWORD ALEATORIO CON LA LONGITUD INDICADA
-	private static String generarPassword(int longitud) {
+	private String generarPassword(int longitud) {
 
-		final String alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 		SecureRandom random = new SecureRandom();
 		StringBuilder builder = new StringBuilder();
 
 		for (int i = 0; i < longitud; i++) {
-			int index = random.nextInt(alfabeto.length());
-			builder.append(alfabeto.charAt(index));
+			int index = random.nextInt(ALFABETO.length());
+			builder.append(ALFABETO.charAt(index));
 		}
 		return builder.toString();
 	}
 	
 	//METODO QUE COMPRUEBA SI UNA CONTRASEÑA ES DEBIL(FALSE) o FUERTE(TRUE)
-	public static boolean esFuerte(String password) {
+	public boolean esFuerte() {
 		int contMay = 0;
 		int contMin = 0;
 		int contNum = 0;
-		for (int i = 0; i<password.length(); i++) {
-			char letra = password.charAt(i);
+		for (int i = 0; i<contraseña.length(); i++) {
+			char letra = contraseña.charAt(i);
 			if(Character.isUpperCase(letra)) {
 				contMay++;
 			} else {

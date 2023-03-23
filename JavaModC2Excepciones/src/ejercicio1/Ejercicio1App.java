@@ -22,12 +22,14 @@ public class Ejercicio1App {
 		boolean estado = true;
 		int contador = 0;
 		int numeroIntroducido = 0;
-		
+		System.out.print("Introduce un numero del 1 al 500 a ver si lo adivinas: ");
 		do {
-			System.out.print("Introduce un numero del 1 al 500 a ver si lo adivinas: ");
 			try {
 				contador++;
-				numeroIntroducido = sc.nextInt();
+				numeroIntroducido = sc.nextInt();	
+			} catch(Exception e) {
+				System.out.println(e.getLocalizedMessage().toString());
+			} finally {
 				if(numeroIntroducido<numeroAdivinar) {
 					System.out.println("El numero que buscas es mas grande");
 				} else if (numeroIntroducido>numeroAdivinar) {
@@ -36,9 +38,8 @@ public class Ejercicio1App {
 					estado = false;
 					System.out.println("HAS ENCONTRADO EL NUMERO!!!, efectivamente era el "+numeroIntroducido+" y has necesitado "+contador+" intentos");
 				}
-			} catch (NullPointerException e) {
-				System.out.println("No se ha conseguido reconocer la entrada por teclado");
-			} 
+			}
+			
 		} while (estado);
 		System.out.println("");
 
