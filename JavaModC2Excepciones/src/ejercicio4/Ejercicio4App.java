@@ -22,6 +22,9 @@ public class Ejercicio4App {
 		Calculadora calculo = new Calculadora();
 		int num1, num2;
 		System.out.println("Bienvenido a la calculadora");
+		try {
+			
+		
 		do {
 			System.out.println("1: SUMAR");
 			System.out.println("2: RESTAR");
@@ -77,19 +80,18 @@ public class Ejercicio4App {
 				num1 = sc.nextInt();
 				System.out.print("Introduce el divisor: ");
 				num2 = sc.nextInt();
-				try {
-					calculo.division(num1, num2);
-				} catch (ArithmeticException e) {
-					System.out.println(e.getMessage().toString());
-				}
+				calculo.division(num1, num2);
 				break;
 			case 0:
 				System.out.println("Que tenga un buen dia");
 				break;
 			}
 			System.out.println("");
-			System.out.println("Prueba con el GETTER: " + calculo.getResultado());
 		} while (eleccion != 0);
-		sc.close();
+		}catch(ArithmeticException e) {
+			System.err.println(e.getLocalizedMessage().toString());
+		} finally {
+			sc.close();
+		}
 	}
 }
